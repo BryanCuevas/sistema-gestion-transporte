@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transportes MoviPerú</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<style>
+.form-control::placeholder {
+	font-weight: bold; /* Cambia el texto del placeholder a negrita */
+}
+</style>
+</head>
+<body>
+<nav class="navbar bg-warning-subtle navbar-expand-lg">
+    <div class="container">
+        <div class="navbar-brand link-primary fs-3"><b>Transportes MoviPerú</b></div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" 
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item me-3">
+                    <a class="nav-link link-dark" aria-current="page" 
+                    href="/sistema-gestion-transporte">
+                    	<b>Inicio</b>
+                    </a>
+                </li>
+                <li class="nav-item dropdown me-3">           
+                    <a class="nav-link link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                        <b>Vehículos</b>
+                    </a>
+                    <ul class="dropdown-menu bg-warning-subtle">
+                        <li><a class="dropdown-item" href="listar-ligeros"><b>Carga ligera</b></a></li>
+                        <li><a class="dropdown-item" href="listar-pesados"><b>Carga pesada</b></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown me-3">
+                    <a class="nav-link link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                        <b>Rutas</b>
+                    </a>
+                    <ul class="dropdown-menu bg-warning-subtle">
+                        <li><a class="dropdown-item" href="rutas-huancayo"><b>Huancayo</b></a></li>
+                        <li><a class="dropdown-item" href="rutas-lima"><b>Lima</b></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item me-3">           
+                    <a class="nav-link link-dark" href="listar-conductores" role="button" aria-expanded="false">
+                        <b>Conductores</b>
+                    </a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link link-dark" href="listar-cargas" role="button" aria-expanded="false">
+                        <b>Cargas</b>
+                    </a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link link-dark" href="monitoreo" role="button" aria-expanded="false">
+                        <b>Monitoreo</b>
+                    </a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+        		<input class="form-control me-2 text-dark" type="search" placeholder="Buscar" aria-label="Search">
+        		<button class="btn btn-outline-primary" type="submit"><b>Buscar</b></button>
+      		</form>
+        </div>
+    </div>
+</nav>
+
+<img src="https://nowthatslogistics.com/wp-content/uploads/2022/11/DSC00193.jpg" alt="img-index"
+style="width: 100%;height: 100%;display: block; ">
+
+
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+</body>
+</html>
