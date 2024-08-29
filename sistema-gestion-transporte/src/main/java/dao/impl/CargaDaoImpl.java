@@ -18,7 +18,7 @@ public class CargaDaoImpl implements CargaDao {
 		List<Carga> cargas = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_carga, tipo, descripcion, peso FROM cargas WHERE estado_auditoria='1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,10 +55,10 @@ public class CargaDaoImpl implements CargaDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_carga, tipo, descripcion, peso FROM CARGAS WHERE estado_auditoria='1' AND id_carga= ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
-			pstm.setInt(1,id);
+			pstm.setInt(1, id);
 			
 			ResultSet rs = pstm.executeQuery();
 			
@@ -88,14 +88,41 @@ public class CargaDaoImpl implements CargaDao {
 
 	@Override
 	public void insertarCarga(Carga carga) {
-		// TODO Auto-generated method stub
+		Connection cn = null;
 		
+		try {
+			cn = DatabaseAccess.getConnection();
+			cn.setAutoCommit(false);
+			String sql = "INSERT INTO cargas(tipo, descripcion, peso) VALUES (?,?,?)";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setString(1, carga.getTipo());
+			pstm.setString(2, carga.getDescripcion());
+			pstm.setInt(3, carga.getPeso());
+			
+			pstm.executeUpdate();
+			cn.commit();
+			
+			pstm.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			
+		}finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);				
+			}
+		}	
 	}
 	
 	private Carga resultSetToObject(ResultSet rs) throws Exception {
 		Carga carga = new Carga();
 		carga.setIdCarga(rs.getInt("id_carga"));
-		carga.setTipo((char)rs.getInt("tipo"));
+		carga.setTipo(rs.getString("tipo"));
 		carga.setDescripcion(rs.getString("descripcion"));
 		carga.setPeso(rs.getInt("peso"));
 		

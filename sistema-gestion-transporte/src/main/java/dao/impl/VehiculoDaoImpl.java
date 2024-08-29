@@ -18,7 +18,7 @@ public class VehiculoDaoImpl implements VehiculoDao {
 		List<Vehiculo> vehiculos = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_vehiculo, tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,10 +55,10 @@ public class VehiculoDaoImpl implements VehiculoDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_vehiculo, tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1' AND id_vehiculo = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
-			pstm.setInt(1,id);
+			pstm.setInt(1, id);
 			
 			ResultSet rs = pstm.executeQuery();
 			
@@ -87,14 +87,49 @@ public class VehiculoDaoImpl implements VehiculoDao {
 
 	@Override
 	public void insertarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
+		Connection cn = null;
+		
+		try {
+			cn = DatabaseAccess.getConnection();
+			cn.setAutoCommit(false);
+			String sql = "INSERT INTO vehiculos(tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo) VALUES (?,?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setString(1, vehiculo.getTipo());
+			pstm.setString(2, vehiculo.getPlaca());
+			pstm.setString(3, vehiculo.getModelo());
+			pstm.setString(4, vehiculo.getSoat());
+			pstm.setString(5, vehiculo.getDescripcion());
+			pstm.setInt(6, vehiculo.getIdCarga());
+			pstm.setInt(7, vehiculo.getIdRuta());
+			pstm.setInt(8, vehiculo.getIdConductor());
+			pstm.setString(9, vehiculo.getFotoVehiculo());
+			
+			pstm.executeUpdate();
+			cn.commit();
+			
+			pstm.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			
+		}finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);				
+			}
+		}
+
 		
 	}
 	
 	private Vehiculo resultSetToObject(ResultSet rs) throws Exception {
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setIdVehiculo(rs.getInt("id_vehiculo"));
-		vehiculo.setTipo((char)rs.getInt("tipo"));
+		vehiculo.setTipo(rs.getString("tipo"));
 		vehiculo.setPlaca(rs.getString("placa"));
 		vehiculo.setModelo(rs.getString("modelo"));
 		vehiculo.setSoat(rs.getString("soat"));

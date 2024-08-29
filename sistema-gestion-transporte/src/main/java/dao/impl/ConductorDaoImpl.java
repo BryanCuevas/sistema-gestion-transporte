@@ -18,7 +18,7 @@ public class ConductorDaoImpl implements ConductorDao {
 		List<Conductor> conductores = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_conductor, nombres, apellido_paterno, apellido_materno, documento_identidad, telefono, licencia, id_ruta, foto_conductor FROM conductores WHERE estado_auditoria = '1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,10 +55,10 @@ public class ConductorDaoImpl implements ConductorDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "query";
+			String sql = "SELECT id_conductor, nombres, apellido_paterno, apellido_materno, documento_identidad, telefono, licencia, id_ruta, foto_conductor FROM conductores WHERE estado_auditoria = '1' AND id_conductor = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
-			pstm.setInt(1,id);
+			pstm.setInt(1, id);
 			
 			ResultSet rs = pstm.executeQuery();
 			
@@ -88,8 +88,39 @@ public class ConductorDaoImpl implements ConductorDao {
 
 	@Override
 	public void insertarConductor(Conductor conductor) {
-		// TODO Auto-generated method stub
-		
+		Connection cn = null;
+		try {
+			cn = DatabaseAccess.getConnection();
+			cn.setAutoCommit(false);
+			String sql = "INSERT INTO conductores(nombres, apellido_paterno, apellido_materno, documento_identidad, telefono, licencia, id_ruta, foto_conductor) VALUES (?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setString(1, conductor.getNombres());
+			pstm.setString(2, conductor.getApellidoPaterno());
+			pstm.setString(3, conductor.getApellidoMaterno());
+			pstm.setString(4, conductor.getDocumentoIdentidad());
+			pstm.setString(5, conductor.getTelefono());
+			pstm.setString(6, conductor.getLicencia());
+			pstm.setInt(7, conductor.getIdRuta());
+			pstm.setString(8, conductor.getFotoConductor());
+			
+			pstm.executeUpdate();
+			cn.commit();
+			
+			pstm.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			
+		}finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);				
+			}
+		}	
 	}
 	
 	private Conductor resultSetToObject(ResultSet rs) throws Exception {
