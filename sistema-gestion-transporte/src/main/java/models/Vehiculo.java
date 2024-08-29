@@ -2,7 +2,7 @@ package models;
 
 public class Vehiculo {
 	private Integer idVehiculo;
-	private char tipo;
+	private String tipo;
 	private String placa;
 	private String modelo;
 	private String soat;
@@ -18,10 +18,10 @@ public class Vehiculo {
 	public void setIdVehiculo(Integer idVehiculo) {
 		this.idVehiculo = idVehiculo;
 	}
-	public char getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
-	public void setTipo(char tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	public String getPlaca() {

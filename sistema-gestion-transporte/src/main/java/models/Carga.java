@@ -2,7 +2,7 @@ package models;
 
 public class Carga {
 	private Integer idCarga;
-	private char tipo;
+	private String tipo;
 	private String descripcion;
 	private Integer peso;
 	
@@ -12,10 +12,10 @@ public class Carga {
 	public void setIdCarga(Integer idCarga) {
 		this.idCarga = idCarga;
 	}
-	public char getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
-	public void setTipo(char tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	public String getDescripcion() {
