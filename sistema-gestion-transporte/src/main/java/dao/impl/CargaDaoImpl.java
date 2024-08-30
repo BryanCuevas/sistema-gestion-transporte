@@ -18,7 +18,7 @@ public class CargaDaoImpl implements CargaDao {
 		List<Carga> cargas = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_carga, tipo, descripcion, peso FROM cargas WHERE estado_auditoria='1'";
+			String sql = "SELECT id_carga, tipo_carga, descripcion, peso FROM cargas WHERE estado_auditoria='1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,7 +55,7 @@ public class CargaDaoImpl implements CargaDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_carga, tipo, descripcion, peso FROM CARGAS WHERE estado_auditoria='1' AND id_carga= ?";
+			String sql = "SELECT id_carga, tipo_carga, descripcion, peso FROM CARGAS WHERE estado_auditoria='1' AND id_carga= ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, id);
@@ -93,10 +93,10 @@ public class CargaDaoImpl implements CargaDao {
 		try {
 			cn = DatabaseAccess.getConnection();
 			cn.setAutoCommit(false);
-			String sql = "INSERT INTO cargas(tipo, descripcion, peso) VALUES (?,?,?)";
+			String sql = "INSERT INTO cargas(tipo_carga, descripcion, peso) VALUES (?,?,?)";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
-			pstm.setString(1, carga.getTipo());
+			pstm.setString(1, carga.getTipoCarga());
 			pstm.setString(2, carga.getDescripcion());
 			pstm.setInt(3, carga.getPeso());
 			
@@ -122,7 +122,7 @@ public class CargaDaoImpl implements CargaDao {
 	private Carga resultSetToObject(ResultSet rs) throws Exception {
 		Carga carga = new Carga();
 		carga.setIdCarga(rs.getInt("id_carga"));
-		carga.setTipo(rs.getString("tipo"));
+		carga.setTipoCarga(rs.getString("tipo_carga"));
 		carga.setDescripcion(rs.getString("descripcion"));
 		carga.setPeso(rs.getInt("peso"));
 		
