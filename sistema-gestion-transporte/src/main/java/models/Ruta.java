@@ -3,6 +3,7 @@ package models;
 public class Ruta {
 	private Integer idRuta;
 	private String provincia;
+	private String nombreRuta;
 	private String latitudOrigen;
 	private String longitudOrigen;
 	private String latidudDestino;
@@ -19,6 +20,12 @@ public class Ruta {
 	}
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
+	}
+	public String getNombreRuta() {
+		return nombreRuta;
+	}
+	public void setNombreRuta(String nombreRuta) {
+		this.nombreRuta = nombreRuta;
 	}
 	public String getLatitudOrigen() {
 		return latitudOrigen;

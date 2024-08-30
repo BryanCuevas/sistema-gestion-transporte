@@ -18,7 +18,7 @@ public class RutaDaoImpl implements RutaDao {
 		List<Ruta> rutas = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_ruta, provincia, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1'";
+			String sql = "SELECT id_ruta, provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,7 +55,7 @@ public class RutaDaoImpl implements RutaDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_ruta, provincia, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1' AND id_ruta = ?";
+			String sql = "SELECT id_ruta, provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1' AND id_ruta = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, id);
@@ -93,14 +93,15 @@ public class RutaDaoImpl implements RutaDao {
 		try {
 			cn = DatabaseAccess.getConnection();
 			cn.setAutoCommit(false);
-			String sql = "INSERT INTO rutas(provincia, latitud_origen, longitud_origen, latitud_destino, longitud_destino) VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO rutas(provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino) VALUES (?,?,?,?,?,?)";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			pstm.setString(1, ruta.getProvincia());
-			pstm.setString(2, ruta.getLatitudOrigen());
-			pstm.setString(3, ruta.getLongitudOrigen());
-			pstm.setString(4, ruta.getLatidudDestino());
-			pstm.setString(5, ruta.getLongitudDestino());
+			pstm.setString(2, ruta.getNombreRuta());
+			pstm.setString(3, ruta.getLatitudOrigen());
+			pstm.setString(4, ruta.getLongitudOrigen());
+			pstm.setString(5, ruta.getLatidudDestino());
+			pstm.setString(6, ruta.getLongitudDestino());
 			
 			pstm.executeUpdate();
 			cn.commit();
@@ -125,6 +126,7 @@ public class RutaDaoImpl implements RutaDao {
 		Ruta ruta = new Ruta();
 		ruta.setIdRuta(rs.getInt("id_ruta"));
 		ruta.setProvincia(rs.getString("provincia"));
+		ruta.setNombreRuta(rs.getString("nombre_ruta"));
 		ruta.setLatitudOrigen(rs.getString("latitud_origen"));
 		ruta.setLongitudOrigen(rs.getString("longitud_origen"));
 		ruta.setLatidudDestino(rs.getString("latitud_destino"));
