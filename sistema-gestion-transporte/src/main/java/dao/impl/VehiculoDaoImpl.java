@@ -18,7 +18,7 @@ public class VehiculoDaoImpl implements VehiculoDao {
 		List<Vehiculo> vehiculos = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_vehiculo, tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1'";
+			String sql = "SELECT id_vehiculo, tipo_vehiculo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			ResultSet rs = pstm.executeQuery();
@@ -55,7 +55,7 @@ public class VehiculoDaoImpl implements VehiculoDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_vehiculo, tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1' AND id_vehiculo = ?";
+			String sql = "SELECT id_vehiculo, tipo_vehiculo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo FROM vehiculos WHERE estado_auditoria = '1' AND id_vehiculo = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, id);
@@ -95,7 +95,7 @@ public class VehiculoDaoImpl implements VehiculoDao {
 			String sql = "INSERT INTO vehiculos(tipo, placa, modelo, soat, descripcion, id_carga, id_ruta, id_conductor, foto_vehiculo) VALUES (?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
-			pstm.setString(1, vehiculo.getTipo());
+			pstm.setString(1, vehiculo.getTipoVehiculo());
 			pstm.setString(2, vehiculo.getPlaca());
 			pstm.setString(3, vehiculo.getModelo());
 			pstm.setString(4, vehiculo.getSoat());
@@ -129,7 +129,7 @@ public class VehiculoDaoImpl implements VehiculoDao {
 	private Vehiculo resultSetToObject(ResultSet rs) throws Exception {
 		Vehiculo vehiculo = new Vehiculo();
 		vehiculo.setIdVehiculo(rs.getInt("id_vehiculo"));
-		vehiculo.setTipo(rs.getString("tipo"));
+		vehiculo.setTipoVehiculo(rs.getString("tipo_vehiculo"));
 		vehiculo.setPlaca(rs.getString("placa"));
 		vehiculo.setModelo(rs.getString("modelo"));
 		vehiculo.setSoat(rs.getString("soat"));
