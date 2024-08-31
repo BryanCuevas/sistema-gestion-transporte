@@ -9,6 +9,7 @@ import java.util.List;
 import config.DatabaseAccess;
 import dao.CargaDao;
 import models.Carga;
+import utils.Util;
 
 public class CargaDaoImpl implements CargaDao {
 
@@ -21,6 +22,7 @@ public class CargaDaoImpl implements CargaDao {
 			String sql = "SELECT id_carga, tipo_carga, descripcion, peso FROM cargas WHERE estado_auditoria='1'";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
+			
 			ResultSet rs = pstm.executeQuery();
 			
 			cargas = new ArrayList();
@@ -55,7 +57,7 @@ public class CargaDaoImpl implements CargaDao {
 		
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_carga, tipo_carga, descripcion, peso FROM CARGAS WHERE estado_auditoria='1' AND id_carga= ?";
+			String sql = "SELECT id_carga, tipo_carga, descripcion, peso FROM CARGAS WHERE estado_auditoria='1' AND id_carga = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, id);
