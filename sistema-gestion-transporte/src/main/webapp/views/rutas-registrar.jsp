@@ -37,19 +37,19 @@
         	</div>
         	<div class="form-group mb-3">
 	            <label for="latitud_origen">Latitud del origen</label>
-	            <input type="text" class="form-control" id="latitud_origen" name="latitud_origen">
+	            <input type="text" class="form-control" id="latitud_origen" name="latitud_origen" required>
         	</div>
         	<div class="form-group mb-3">
 	            <label for="longitud_origen">Longitud del origen</label>
-	            <input type="text" class="form-control" id="longitud_origen" name="longitud_origen">
+	            <input type="text" class="form-control" id="longitud_origen" name="longitud_origen" required>
         	</div>
         	<div class="form-group mb-3">
 	            <label for="latitud_destino">Latitud del destino</label>
-	            <input type="text" class="form-control" id="latitud_destino" name="latitud_destino">
+	            <input type="text" class="form-control" id="latitud_destino" name="latitud_destino" required>
         	</div>
         	<div class="form-group mb-3">
 	            <label for="longitud_destino">Longitud del destino</label>
-	            <input type="text" class="form-control" id="longitud_destino" name="longitud_destino">
+	            <input type="text" class="form-control" id="longitud_destino" name="longitud_destino" required>
         	</div>
         	<a href="javascript:history.back()" class="btn btn-danger me-3">Cancelar</a>
         	<button type="submit" class="btn btn-success">Registrar</button>
