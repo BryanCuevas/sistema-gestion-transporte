@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <%@ page import="java.util.List" %>
 <%@ page import="models.Conductor" %>
-<%@ page import="utils.Util" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,9 +24,10 @@
 	}
 </style>
 <body>
+
 	<jsp:include page="barra-navegacion.jsp" />
 	
-		<div class="container mt-5">		
+	<div class="container mt-5">		
 		<h2>Listado de Conductores</h2>
 		<div class="row">
 			<%
@@ -62,6 +61,11 @@
 		<a href="/sistema-gestion-transporte" class="btn btn-warning mt-4 me-3">Ir a inicio</a>
 		<a href="/sistema-gestion-transporte/registrar-conductor" class="btn btn-success mt-4">Registrar Conductor</a>
 	</div>
+	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
