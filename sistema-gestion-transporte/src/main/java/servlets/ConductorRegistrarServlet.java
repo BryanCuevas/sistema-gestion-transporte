@@ -1,41 +1,58 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ConductorRegistrarServlet
- */
+import dao.ConductorDao;
+import dao.RutaDao;
+import dao.impl.ConductorDaoImpl;
+import dao.impl.RutaDaoImpl;
+import models.Conductor;
+import models.Ruta;
+
 @WebServlet("/registrar-conductor")
 public class ConductorRegistrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private ConductorDao conductorDao;
+	private RutaDao rutaDao;
+	
     public ConductorRegistrarServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        conductorDao = new ConductorDaoImpl();
+        rutaDao = new RutaDaoImpl();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+        List<Ruta> rutas = rutaDao.listarRutas();
+		
+		request.setAttribute("rutas", rutas);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/conductores-registrar.jsp");
+		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Conductor conductor = new Conductor();
+		conductor.setNombres(request.getParameter("nombres"));
+		conductor.setApellidoPaterno(request.getParameter("apellido_paterno"));
+		conductor.setApellidoMaterno(request.getParameter("apellido_materno"));
+		conductor.setDocumentoIdentidad(request.getParameter("documento_identidad"));
+		conductor.setTelefono(request.getParameter("telefono"));
+		conductor.setLicencia(request.getParameter("licencia"));
+		conductor.setIdRuta(Integer.parseInt(request.getParameter("id_ruta")));
+		conductor.setFotoConductor(request.getParameter("foto_conductor"));
+
+		
+		conductorDao.insertarConductor(conductor);
+		
+		response.sendRedirect(request.getContextPath() + "/listar-conductores");
 	}
 
 }
