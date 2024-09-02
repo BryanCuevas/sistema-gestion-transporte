@@ -37,7 +37,7 @@
         	</div>
         	<div class="form-group mb-3">
 	            <label for="peso">Peso (kg)</label>
-	            <input type="text" class="form-control" id="peso" name="peso">
+	            <input type="text" class="form-control" id="peso" name="peso" required>
         	</div>
         	<a href="javascript:history.back()" class="btn btn-danger me-3">Cancelar</a>
         	<button type="submit" class="btn btn-success">Registrar</button>
