@@ -13,14 +13,16 @@ import models.Ruta;
 public class RutaDaoImpl implements RutaDao {
 
 	@Override
-	public List<Ruta> obtenerRutas() {
+	public List<Ruta> listarRutas(String provincia) {
 		Connection cn = null;
 		List<Ruta> rutas = null;
 		try {
 			cn = DatabaseAccess.getConnection();
-			String sql = "SELECT id_ruta, provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1'";
+			String sql = "SELECT id_ruta, provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1' AND provincia = ?";
 			
 			PreparedStatement pstm = cn.prepareStatement(sql);
+			pstm.setString(1, provincia);
+			
 			ResultSet rs = pstm.executeQuery();
 			
 			rutas = new ArrayList();
