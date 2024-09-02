@@ -11,6 +11,42 @@ import dao.RutaDao;
 import models.Ruta;
 
 public class RutaDaoImpl implements RutaDao {
+	@Override
+	public List<Ruta> listarRutas() {
+		Connection cn = null;
+		List<Ruta> rutas = null;
+		try {
+			cn = DatabaseAccess.getConnection();
+			String sql = "SELECT id_ruta, provincia, nombre_ruta, latitud_origen, longitud_origen, latitud_destino, longitud_destino FROM rutas WHERE estado_auditoria = '1'";
+			
+			PreparedStatement pstm = cn.prepareStatement(sql);
+			
+			ResultSet rs = pstm.executeQuery();
+			
+			rutas = new ArrayList();
+			
+			while (rs.next()) {
+				rutas.add(resultSetToObject(rs));
+			}
+			rs.close();
+			pstm.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			rutas = null;
+			
+		} finally {
+			try {
+				if(cn != null) {
+					cn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2);				
+			}
+		}
+		
+		return rutas;
+	}
 
 	@Override
 	public List<Ruta> listarRutas(String provincia) {
