@@ -50,8 +50,8 @@
 	            <input type="text" class="form-control" id="licencia" name="licencia" required>
         	</div>
         	<div class="form-group mb-3">
-			    <label for="exampleFormControlInput1" class="form-label">Provincia</label>
-			    <select class="form-select" name="provincia" aria-label="Default select example" required>
+			    <label for="exampleFormControlInput1" class="form-label">Ruta</label>
+			    <select class="form-select" name="id_ruta" aria-label="Default select example" required>
 			        <option value="" selected disabled hidden>Seleccionar</option>
 			        <%
 						List<Ruta> listaRutas = (List<Ruta>) request.getAttribute("rutas");
@@ -65,8 +65,12 @@
 					%>
 			    </select>
 			</div>
-        	<a href="javascript:history.back()" class="btn btn-danger me-3 mb-4">Cancelar</a>
-        	<button type="submit" class="btn btn-success mb-4">Registrar</button>
+			<div class="form-group mb-3">
+	            <label for="foto_conductor">URL de la foto</label>
+	            <input type="text" class="form-control" id="foto_conductor" name="foto_conductor" required>
+        	</div>
+        	<a href="javascript:history.back()" class="btn btn-danger me-3">Cancelar</a>
+        	<button type="submit" class="btn btn-success">Registrar</button>
 		</form>
 	</div>
 	
