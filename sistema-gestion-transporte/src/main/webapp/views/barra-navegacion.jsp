@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown me-3">           
-                    <a class="nav-link link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+                    <a class="nav-link link-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" 
                     aria-expanded="false">
                         <b>Vehículos</b>
                     </a>
@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown me-3">
-                    <a class="nav-link link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
+                    <a class="nav-link link-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" 
                     aria-expanded="false">
                         <b>Rutas</b>
                     </a>
