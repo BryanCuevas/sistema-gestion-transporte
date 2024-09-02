@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="models.Carga" %>
-<%@ page import="utils.Util" %>
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +40,7 @@
 			
 		</div>
 		
-		<a href="../listar-cargas" class="btn btn-warning mt-4">Ir a listar cargas</a>
+		<a href="javascript:history.back()" class="btn btn-info mt-4">Volver</a>
 	</div>
 
 	<script

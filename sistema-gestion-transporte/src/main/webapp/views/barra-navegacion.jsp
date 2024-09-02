@@ -29,8 +29,8 @@
                         <b>Rutas</b>
                     </a>
                     <ul class="dropdown-menu bg-warning-subtle">
-                        <li><a class="dropdown-item" href="/sistema-gestion-transporte/rutas-huancayo"><b>Huancayo</b></a></li>
-                        <li><a class="dropdown-item" href="/sistema-gestion-transporte/rutas-lima"><b>Lima</b></a></li>
+                        <li><a class="dropdown-item" href="/sistema-gestion-transporte/listar-rutas/Huancayo"><b>Huancayo</b></a></li>
+                        <li><a class="dropdown-item" href="/sistema-gestion-transporte/listar-rutas/Lima"><b>Lima</b></a></li>
                     </ul>
                 </li>
                 <li class="nav-item me-3">           

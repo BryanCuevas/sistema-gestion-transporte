@@ -21,13 +21,12 @@
 	<jsp:include page="barra-navegacion.jsp" />
 	
 	<div class="container mt-5">
-		<a href="/sistema-gestion-transporte" class="mb-3 btn btn-primary">Ir a Inicio</a>
 		<h2>Registrar Carga</h2>
 		<form action="" method="post">
 			<div class="form-group mb-3">
 			    <label for="exampleFormControlInput1" class="form-label">Tipo de carga</label>
 			    <select class="form-select" name="tipo_carga" aria-label="Default select example" required>
-			        <option selected value="0">Seleccionar</option>
+			        <option value="" selected disabled hidden>Seleccionar</option>
 			        <option value='1'>Frágil</option>
 			        <option value='2'>Normal</option>
 			    </select>
@@ -40,7 +39,8 @@
 	            <label for="peso">Peso (kg)</label>
 	            <input type="text" class="form-control" id="peso" name="peso">
         	</div>
-        	<button type="submit" class="btn btn-primary">Registrar</button>
+        	<a href="javascript:history.back()" class="btn btn-danger me-3">Cancelar</a>
+        	<button type="submit" class="btn btn-success">Registrar</button>
 		</form>
 	</div>
 
@@ -48,6 +48,5 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
-
 </body>
 </html>

@@ -14,7 +14,7 @@ import dao.CargaDao;
 import dao.impl.CargaDaoImpl;
 import models.Carga;
 
-@WebServlet("/listar-cargas/*")
+@WebServlet("/listar-cargas")
 public class CargaListarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CargaDao cargaDao;
@@ -24,9 +24,6 @@ public class CargaListarServlet extends HttpServlet {
         cargaDao = new CargaDaoImpl(); 
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Carga> cargas = cargaDao.listarCargas();
 		
@@ -36,9 +33,6 @@ public class CargaListarServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <%@ page import="java.util.List" %>
 <%@ page import="models.Carga" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 </style>
 <body>
 
-<jsp:include page="barra-navegacion.jsp" />
+	<jsp:include page="barra-navegacion.jsp" />
 
 	<div class="container mt-5">		
 		<h2>Listado de Cargas</h2>
@@ -37,11 +37,9 @@
 			%>
 				<div class="col-md-4 mt-4">
 					<a href="/sistema-gestion-transporte/buscar-carga/<%=carga.getIdCarga()%>">
-					<div class="card-body">
-						<div class="card">
-	                        <h2 class="card-title">Pedido N° <%= carga.getIdCarga() %></h2>               
-                    	</div>
-					</div>
+					<div class="card">
+						<h2 class="card-title">Pedido N° <%= carga.getIdCarga() %></h2>               
+                    </div>
                     </a>	
                 </div>
 			<%
@@ -56,8 +54,8 @@
 			%>
 		</div>
 		
-		<a href="./" class="btn btn-warning mt-4 me-3">Ir a inicio</a>
-		<a href="registrar-carga" class="btn btn-success mt-4">Registrar Carga</a>
+		<a href="/sistema-gestion-transporte" class="btn btn-warning mt-4 me-3">Ir a inicio</a>
+		<a href="/sistema-gestion-transporte/registrar-carga" class="btn btn-success mt-4">Registrar Carga</a>
 	</div>
 
 <script
