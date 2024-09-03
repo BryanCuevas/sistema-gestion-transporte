@@ -8,5 +8,4 @@ public interface RutaDao {
 	public List<Ruta> listarRutas(String provincia);
 	public Ruta obtenerRuta(Integer id);
 	public void insertarRuta(Ruta ruta);
-	
 }

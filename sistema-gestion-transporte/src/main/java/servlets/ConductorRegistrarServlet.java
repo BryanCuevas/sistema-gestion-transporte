@@ -49,7 +49,6 @@ public class ConductorRegistrarServlet extends HttpServlet {
 		conductor.setIdRuta(Integer.parseInt(request.getParameter("id_ruta")));
 		conductor.setFotoConductor(request.getParameter("foto_conductor"));
 
-		
 		conductorDao.insertarConductor(conductor);
 		
 		response.sendRedirect(request.getContextPath() + "/listar-conductores");
